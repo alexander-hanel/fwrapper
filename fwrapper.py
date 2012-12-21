@@ -56,5 +56,5 @@ class WRAPPER():
         f.close()
         
 if __name__ == "__main__":
-    dwrap = WRAPPER()
-    dwrap.run()
+    fwrapper = WRAPPER()
+    fwrapper.run()
