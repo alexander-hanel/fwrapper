@@ -7,8 +7,6 @@
 # Author
 #    alexander<dot>hanel<at>gmail<dot>com
 
-
-
 import sys 
 import idaapi 
 
@@ -29,7 +27,6 @@ class WRAPPER():
         try:
             for byte in GetManyBytes(self.start, self.ogLen):
                 self.buffer = self.buffer + byte
-                print byte
         except:
             self.status = False
         return
