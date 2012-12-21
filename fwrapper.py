@@ -1,3 +1,14 @@
+# Name: 
+#    fwrapper.py
+# Version: 
+#    0.1
+# Description: 
+#    This script can be used to carve out data and work with data in IDA.           
+# Author
+#    alexander<dot>hanel<at>gmail<dot>com
+
+
+
 import sys 
 import idaapi 
 
