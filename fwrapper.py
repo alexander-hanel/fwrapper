@@ -1,7 +1,7 @@
 # Name: 
 #    fwrapper.py
 # Version: 
-#    0.3
+#    0.4
         # 0.2 - removed static instance name
 	# 0.3 - added usage function and add the option to pass a buffer to the patch function.
 	# 0.4 - added stats function to display info. Updated getData to delete the contents of
