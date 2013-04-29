@@ -4,6 +4,8 @@
 #    0.3
         # 0.2 - removed static instance name
 	# 0.3 - added usage function and add the option to pass a buffer to the patch function.
+	# 0.4 - added stats function to display info. Updated getData to delete the contents of
+	#       the obj.buffer. Removes user error if obj.buffer is not cleared. 
 # Description: 
 #    This script can be used to carve out data and work with data in IDA.           
 # Author
@@ -46,7 +48,7 @@ class fwrapper():
 	obj.patch(d)            patch the IDB at obj.start with the argument data. 
 	obj.importb()           opens a file and saves the data in obj.buffer.
 	obj.export()            exports the data in obj.buffer to a save as file.
-	obj.l()                 print length of the buffer
+	obj.stats()             print hex of obj.start, obj.end and obj.buffer length.
 	'''
         
     def checkBounds(self):
@@ -55,7 +57,8 @@ class fwrapper():
 
     def getData(self):
         '''get data betweeen start and end put them into object.buffer'''
-        self.ogLen = self.end - self.start  
+        self.ogLen = self.end - self.start
+	self.buffer = ''
         try:
             for byte in GetManyBytes(self.start, self.ogLen):
                 self.buffer = self.buffer + byte
@@ -93,6 +96,7 @@ class fwrapper():
         f.write(self.buffer)
         f.close()
        
-    def l(self):
-	print hex(len(self.buffer))
-    
+    def stats(self):
+	print "start: %s" % hex(self.start)
+	print "end:   %s" % hex(self.end)
+	print "len:   %s" % hex(len(self.buffer))
