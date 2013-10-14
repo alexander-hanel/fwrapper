@@ -1,11 +1,12 @@
 # Name: 
 #    fwrapper.py
 # Version: 
-#    0.4
+#    0.5
         # 0.2 - removed static instance name
 	# 0.3 - added usage function and add the option to pass a buffer to the patch function.
 	# 0.4 - added stats function to display info. Updated getData to delete the contents of
 	#       the obj.buffer. Removes user error if obj.buffer is not cleared. 
+    # 0.5 - changed the file read 'r' to 'rw'. Fixes a bug when importing. 
 # Description: 
 #    This script can be used to carve out data and work with data in IDA.           
 # Author
@@ -85,7 +86,7 @@ class fwrapper():
         '''import file to save to buffer'''
         fileName = AskFile(0, "*.*", 'Import File')
         try:
-            self.buffer = open(fileName, 'r').read()
+            self.buffer = open(fileName, 'rb').read()
         except:
             sys.stdout.write('ERROR: Cannot access file')
                
